@@ -1,4 +1,3 @@
-test = 50
 actual = 50
 zeros = 0
 
@@ -8,20 +7,16 @@ with open("day1_input.txt") as f:
         distance = int(line.strip()[1:len(line)])
         
         if direction == 'R':
-            test += distance
-            if test > 99:
+            if actual + distance > 99:
                 actual = (actual + distance) % 100
-                test = actual
             else:
-                actual = test
+                actual += distance
                 
         elif direction == 'L':
-            test -= distance
-            if test < 0:
+            if actual - distance < 0:
                 actual = (actual - distance) % 100
-                test = actual
             else:
-                actual = test
+                actual -= distance
         
         if actual == 0:
             zeros += 1
