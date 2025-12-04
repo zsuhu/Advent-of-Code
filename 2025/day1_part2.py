@@ -21,6 +21,8 @@ with open("day1_input.txt") as f:
             elif actual - distance < 0:
                 zeros += abs((actual - distance) // 100)
                 actual = (actual - distance) % 100
+                if actual == 0:
+                    zeros += 1
             elif actual - distance == 0:
                 zeros += 1
                 actual -= distance
