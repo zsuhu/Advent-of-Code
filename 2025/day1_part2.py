@@ -1,7 +1,7 @@
 actual = 50
 zeros = 0
 
-with open("day1_testcase.txt") as f:
+with open("day1_input.txt") as f:
     for line in f:
         direction = line[:1]
         distance = int(line.strip()[1:len(line)])
@@ -15,6 +15,8 @@ with open("day1_testcase.txt") as f:
                 
         elif direction == 'L':
             if actual == 0:
+                if abs((actual - distance) // 100) > 1:
+                    zeros += abs((actual - distance) // 100)
                 actual = (actual - distance) % 100
             elif actual - distance < 0:
                 zeros += abs((actual - distance) // 100)
@@ -28,4 +30,4 @@ with open("day1_testcase.txt") as f:
             
         print(actual, zeros)
                 
-print("password:", zeros) #L55, 55->0
+print("password:", zeros) # L700 0 -> 0
