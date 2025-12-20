@@ -1,6 +1,7 @@
-with open("day2_testcase.txt") as f:
+with open("day2_input.txt") as f:
     string = f.read()
     ranges = string.strip().split(',')
+    #print(ranges)
       
 total = 0
 for ids in ranges:
@@ -11,17 +12,19 @@ for ids in ranges:
         nums.append(str(i))
     
     for num in nums:
-        for i in range(2, len(num)):
+        for i in range(2, len(num)+1):
 
             if len(num) % i == 0:
                 invalid = True
                 sep = len(num) // i
                 for j in range(0,len(num)-sep,sep):
-                    if num[j:sep] != num[j+sep:sep+sep]:
+                    if num[j:j+sep] != num[j+sep:j+sep+sep]:
                         invalid = False
                         break
                         
                 if invalid:
+                    #print(nums, num)
                     total += int(num)
+                    break
             
 print(total)
